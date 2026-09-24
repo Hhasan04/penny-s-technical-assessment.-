@@ -1,0 +1,39 @@
+<section class="cr-list">
+	<header class="cr-list__header">
+		<h2>Change Requests</h2>
+		<label>
+			Status
+			<select class="cr-list__filter" [value]="statusFilter" (change)="onFilterChange($any($event.target).value)">
+				<option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+			</select>
+		</label>
+	</header>
+
+	<p *ngIf="state.status === 'loading'" class="cr-list__loading" role="status">Loading change requests…</p>
+
+	<div *ngIf="state.status === 'error'" class="cr-list__error" role="alert">
+		<p>Couldn't load change requests: {{ state.error }}</p>
+		<button type="button" (click)="load()">Retry</button>
+	</div>
+
+	<p *ngIf="state.status === 'empty'" class="cr-list__empty">No change requests to show.</p>
+
+	<table *ngIf="state.status === 'loaded'" class="cr-list__table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Status</th>
+				<th>Delta</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let cr of visibleRows" class="cr-list__row" (click)="select.emit(cr.id)">
+				<td>{{ cr.id }}</td>
+				<td>{{ cr.title }}</td>
+				<td><span class="cr-status" [attr.data-status]="cr.status">{{ cr.status }}</span></td>
+				<td>{{ cr.delta }}</td>
+			</tr>
+		</tbody>
+	</table>
+</section>

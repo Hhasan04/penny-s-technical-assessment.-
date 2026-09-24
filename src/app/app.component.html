@@ -1,0 +1,14 @@
+<header class="app-header">
+	<h1>Change Request Review</h1>
+	<label>
+		Acting as:
+		<select (change)="switchUser($any($event.target).value)">
+			<option *ngFor="let key of userKeys" [value]="key" [selected]="session.user.id === users[key]?.id">{{ key }}</option>
+		</select>
+	</label>
+</header>
+
+<main class="app-layout" *ngIf="show">
+	<app-cr-list (select)="onSelect($event)"></app-cr-list>
+	<app-cr-detail *ngIf="selectedId" [id]="selectedId"></app-cr-detail>
+</main>

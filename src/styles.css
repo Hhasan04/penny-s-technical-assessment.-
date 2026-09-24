@@ -1,0 +1,57 @@
+/* Minimal demo styling — visual polish is NOT part of the exercise. */
+body {
+	font-family: system-ui, -apple-system, sans-serif;
+	margin: 0;
+	color: #1a1a1a;
+}
+.app-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.75rem 1.25rem;
+	background: #f4f5f7;
+	border-bottom: 1px solid #ddd;
+}
+.app-layout {
+	display: grid;
+	grid-template-columns: 360px 1fr;
+	gap: 1.5rem;
+	padding: 1.25rem;
+	align-items: start;
+}
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+th,
+td {
+	text-align: left;
+	padding: 0.4rem 0.6rem;
+	border-bottom: 1px solid #eee;
+}
+.cr-list__row {
+	cursor: pointer;
+}
+.cr-list__row:hover {
+	background: #f0f6ff;
+}
+button {
+	padding: 0.4rem 0.8rem;
+}
+button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+[role='alert'] {
+	color: #b00020;
+}
+.cr-diff__row[data-kind='changed'] {
+	background: #fff6e5;
+}
+.cr-diff__row[data-kind='added'] {
+	background: #e9f8ee;
+}
+.cr-diff__row[data-kind='removed'] {
+	background: #fdecea;
+}
