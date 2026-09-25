@@ -7,13 +7,13 @@
 <!-- Grouped by task: bugs fixed and features implemented (component + template). -->
 - Gated the Approve and Reject actions so they are available only when the CR is `PENDING_APPROVAL` and the current user has an approval policy recognized by `canApprovePolicy`.
 - Fixed line-item diff detection to classify a matched SKU as changed when its quantity or unit price differs.
-
+- Added a status filter that narrows the loaded CR list. A filter with no matches leaves the table empty.
 
 ## 2. Component & state model
 <!-- The screens, the view-state each component exposes, and how data flows from the mock API into the
 template. -->
 
--
+- The list stores API results in `ViewState`; `visibleRows` derives the displayed rows from that data and the selected `statusFilter`.
 
 ## 3. Invariants I keep
 <!-- Which properties the UI guarantees, and where in the component/template each is enforced. -->
