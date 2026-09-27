@@ -84,7 +84,7 @@ export class CrDetailComponent implements OnChanges {
 	async approve(): Promise<void> {
 		try {
 			const id = this.detail?.id;
-			if (!id || !this.canApprove)
+			if (!id || !this.canApprove || this.submitting)
 				return;
 
 			this.submitting = true;

@@ -16,7 +16,7 @@
 ## 2. Component & state model
 <!-- The screens, the view-state each component exposes, and how data flows from the mock API into the
 template. -->
-- The detail component loads one CR into `ViewState` and derives the diff and action eligibility from the CR data and current user’s approval policies. Timeline ordering and action flows remain to be completed.
+- The detail component loads the selected CR into `ViewState`. When the selected ID changes, `ngOnChanges` loads the newly selected CR. The component derives the diff, chronological timeline, and action eligibility from the loaded CR and current user, and tracks action progress and errors explicitly.
 - The list stores API results in `ViewState`; `visibleRows` derives the displayed rows from that data and the selected `statusFilter`.
 - The detail component tracks action progress with `submitting`, displays action failures with `actionError`, and uses a form control to validate the rejection reason.
 - The app connects the list and detail components. When an action changes a CR, the detail emits `crChanged`; the app uses that event to reload the list.
@@ -41,7 +41,7 @@ template. -->
 - Checked slow requests: both action buttons are disabled while the request is pending.
 - Checked simulated failures for Approve and Reject: the UI reloads the CR state and displays an error message.
 - Automated tests for the later list and detail changes are deferred until the assessment tasks are complete.
-
+- I reached the assessment time limit before adding automated tests for the later list and detail behavior. The original provided tests passed after the initial fixes, and I manually checked the later behavior. Additional automated tests remain unfinished.
 -
 
 ## 5. Assumptions
