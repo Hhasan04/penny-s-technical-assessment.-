@@ -33,8 +33,12 @@ export class CrDetailComponent implements OnChanges {
 
 	constructor(private readonly api: CrApiService, private readonly session: SessionService) {}
 
+	ngOnInit(): void {
+		void this.load();
+	}
+
 	ngOnChanges(changes: SimpleChanges): void {
-		if (changes['id']) {
+		if (changes['id'] && !changes['id'].firstChange) {
 			void this.load();
 		}
 	}
